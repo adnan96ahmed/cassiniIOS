@@ -10,6 +10,8 @@ import UIKit
 
 class ImageViewController: UIViewController {
 
+    // Model
+    
     var imageURL: URL? {
         didSet {
             image = nil
@@ -19,18 +21,21 @@ class ImageViewController: UIViewController {
         }
     }
     
+    // Private Implementation
+    
     private func fetchImage() {
         if let url = imageURL {
-            let urlContents = try? Data(contentsOf: url)
-            if let imageData = urlContents {
-                image = UIImage(data: imageData)
+            //must include the weak self to stop memory cycle from occuring when
+            //back is selected
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                let urlContents = try? Data(contentsOf: url)
+                if let imageData = urlContents, url == self?.imageURL {
+                    DispatchQueue.main.async {
+                        self?.image = UIImage(data: imageData)
+                    }
+                }
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        imageURL = DemoURL.stanford
     }
 
     override func viewWillAppear(_ animated: Bool) {
