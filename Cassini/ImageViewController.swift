@@ -23,10 +23,13 @@ class ImageViewController: UIViewController {
     
     // Private Implementation
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     private func fetchImage() {
         if let url = imageURL {
             //must include the weak self to stop memory cycle from occuring when
             //back is selected
+            spinner.startAnimating()
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 let urlContents = try? Data(contentsOf: url)
                 if let imageData = urlContents, url == self?.imageURL {
@@ -65,6 +68,7 @@ class ImageViewController: UIViewController {
             imageView.image = newValue
             imageView.sizeToFit()
             scrollView?.contentSize = imageView.frame.size
+            spinner?.stopAnimating()
         }
     }
 }

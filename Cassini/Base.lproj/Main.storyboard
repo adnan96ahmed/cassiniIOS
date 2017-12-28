@@ -21,9 +21,15 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFE-JE-col">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JvB-HO-wWV">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JvB-HO-wWV" firstAttribute="centerX" secondItem="nFE-JE-col" secondAttribute="centerX" id="6sC-gl-Lbu"/>
+                            <constraint firstItem="JvB-HO-wWV" firstAttribute="centerY" secondItem="nFE-JE-col" secondAttribute="centerY" id="6ty-9G-Vzy"/>
                             <constraint firstItem="nFE-JE-col" firstAttribute="top" secondItem="Lyf-Uh-MLm" secondAttribute="top" id="b0C-6J-viN"/>
                             <constraint firstAttribute="trailing" secondItem="nFE-JE-col" secondAttribute="trailing" id="dsX-ta-Y0j"/>
                             <constraint firstItem="nFE-JE-col" firstAttribute="leading" secondItem="Lyf-Uh-MLm" secondAttribute="leading" id="tfu-Nh-L9C"/>
@@ -34,6 +40,7 @@
                     <navigationItem key="navigationItem" id="gtH-mI-np4"/>
                     <connections>
                         <outlet property="scrollView" destination="nFE-JE-col" id="CEK-7s-hbD"/>
+                        <outlet property="spinner" destination="JvB-HO-wWV" id="dfF-qc-jTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3A-02-ZPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
